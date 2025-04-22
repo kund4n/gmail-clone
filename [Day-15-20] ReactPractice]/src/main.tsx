@@ -11,10 +11,25 @@ createRoot(document.getElementById("root")!).render(
     {/* <App /> */}
     {/* <GmailClone /> */}
     <MultiInput
+      label="To"
       listApi={({search}) => {
         return new Promise<any[]>((resolve) => {
           resolve(savedEmail.filter(el=>el.email.toLowerCase().includes(search) || el.uName.toLowerCase().includes(search)));
         });
+      }}
+      onSelect={(selectedItems:any)=>{
+        console.log(selectedItems);
+      }}
+    />
+    <MultiInput
+      label="CC"
+      listApi={({search}) => {
+        return new Promise<any[]>((resolve) => {
+          resolve(savedEmail.filter(el=>el.email.toLowerCase().includes(search) || el.uName.toLowerCase().includes(search)));
+        });
+      }}
+      onSelect={(selectedItems:any)=>{
+        console.log(selectedItems);
       }}
     />
   </StrictMode>

@@ -7,7 +7,15 @@ type SearchInputTypes = {
   };
 type ListApiReturnType = (params: { search: string }) => Promise<SearchInputTypes["results"]>;
 
-export const MultiInput = ({ listApi }: { listApi: ListApiReturnType }) => {
+export const MultiInput = ({ 
+    listApi,
+    label="To",
+    onSelect
+}: { 
+    listApi: ListApiReturnType;
+    label?:string;
+    onSelect:Function
+ }) => {
   const [inputStates, setInputStates] = useState<SearchInputTypes>({
     results: [],
     selectedItems: []
@@ -28,7 +36,7 @@ export const MultiInput = ({ listApi }: { listApi: ListApiReturnType }) => {
   };
   return (
     <div>
-      <label htmlFor="to">to</label>
+      <label htmlFor={label}>{label}</label>
       <div>
         <div>
             {inputStates.selectedItems.map(item=>(<span>{item.uName}</span>))}
@@ -44,8 +52,10 @@ export const MultiInput = ({ listApi }: { listApi: ListApiReturnType }) => {
             <ul>
                 {inputStates.results?.map(result=>(<li
                  onClick={e=>{
-                    setInputStates(old=>({...old,selectedItems:[...old.selectedItems,result]}))
-                    
+                    e.preventDefault();
+                    const selectedItems = [...inputStates.selectedItems,result];
+                    onSelect(selectedItems);
+                    setInputStates(old=>({...old,selectedItems}));
                  }}
                 >{result.uName}</li>))}
                 
