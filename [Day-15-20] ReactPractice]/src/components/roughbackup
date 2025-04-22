@@ -1,0 +1,34 @@
+          <div className="to-email border-b-2 border-[gray] w-[100%] pb-4 mt-4">
+            <div className="flex justify-between">
+              <div className="flex w-[100%]">
+                <p className="px-4 w-[4.2rem]">To</p>
+                <div className="flex-col w-[100%]">
+                  {/* dynamically Add options */}
+                  <SavedEmailBadges
+                    savedEmails={emailBadge}
+                    deleteItem={(i) => {
+                      // Function to remove a specific item
+                      let tempEmailBadgeArr = [...emailBadge];
+                      tempEmailBadgeArr.splice(i, 1);
+                      setEmailBadge(tempEmailBadgeArr);
+                    }}
+                  />
+                  <input
+                    type="email"
+                    name="toAdd"
+                    id="toAdd"
+                    // value=""
+                    className="w-[100%] text-white"
+                  />
+                </div>
+              </div>
+              <button
+                className="more-icon px-4"
+                onClick={() => {
+                  // toggleToEmailPopUp();
+                }}
+              >
+                <img src="/arrow_down.svg" alt="" />
+              </button>
+            </div>
+          </div>

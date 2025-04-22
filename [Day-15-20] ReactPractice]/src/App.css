@@ -1,0 +1,32 @@
+input:focus-visible {
+  outline: none;
+}
+
+textarea:focus-visible {
+  outline: none;
+}
+
+.hover-effect:hover{
+  background-color: rgb(23, 23, 23);
+  color: white;
+}
+
+button img{
+    cursor: pointer;
+}
+
+textarea{
+   resize: none;
+}
+
+.nav-bar img {
+    cursor: pointer;
+}
+
+.popup-options li{
+    cursor: pointer;
+}
+
+.disabled-option {
+    color: #949494;
+}
